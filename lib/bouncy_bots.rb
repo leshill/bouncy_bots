@@ -8,30 +8,42 @@ module BouncyBots
   end
 
   module ClassMethods
-    def bounce_bots(to, *field_path)
+    def bounce_bots(field, to)
       before_filter :bounce_bot
 
       cattr_accessor :bounce_to
       cattr_accessor :bounce_field
-      cattr_accessor :bounce_field_parents
-      bouncy_settings(to, *field_path)
+      bouncy_settings(field, to)
     end
 
     protected
 
-    def bouncy_settings(to, *field_path)
+    def bouncy_settings(field, to)
+      self.bounce_field = field
       self.bounce_to = to
-      self.bounce_field = field_path.last
-      self.bounce_field_parents = field_path[0..-2]
     end
   end
 
   protected
 
   def bounce_bot
-    bot_check = bounce_field_parents.inject(params) {|p, parent| p[parent] || {}}.delete(bounce_field)
+    bot_check = find_bounce_field(params)
     redirect_to(send(bounce_to)) and return false unless bot_check.blank?
     true
+  end
+
+  def find_bounce_field(hash)
+    if hash.has_key?(bounce_field)
+      return hash.delete(bounce_field)
+    else
+      hash.values.each do |value|
+        if value.kind_of?(Hash)
+          bounce = find_bounce_field(value)
+          return bounce unless bounce.nil?
+        end
+      end
+      return nil
+    end
   end
 end
 
