@@ -19,7 +19,9 @@ Gem::Specification.new do |s|
      "README.rdoc",
      "Rakefile",
      "VERSION",
+     "bouncy_bots.gemspec",
      "lib/bouncy_bots.rb",
+     "lib/bouncy_bots/form_builder_ext.rb",
      "spec/bouncy_bots_spec.rb",
      "spec/spec_helper.rb"
   ]

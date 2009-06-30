@@ -1,5 +1,7 @@
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 
+require 'bouncy_bots/form_builder_ext'
+
 module BouncyBots
   def self.included(base)
     base.extend ClassMethods
