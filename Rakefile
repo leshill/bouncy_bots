@@ -5,7 +5,7 @@ begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
     gem.name = "bouncy_bots"
-    gem.summary = %Q{TODO}
+    gem.summary = %Q{Simple negative captcha for Rails}
     gem.email = "leshill@gmail.com"
     gem.homepage = "http://github.com/leshill/bouncy_bots"
     gem.authors = ["Les Hill"]
