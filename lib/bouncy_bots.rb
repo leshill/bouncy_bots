@@ -8,8 +8,8 @@ module BouncyBots
   end
 
   module ClassMethods
-    def bounce_bots(field, to)
-      before_filter :bounce_bot
+    def bounce_bots(field, to, filter_opts = {})
+      before_filter :bounce_bot, filter_opts
 
       cattr_accessor :bounce_to
       cattr_accessor :bounce_field

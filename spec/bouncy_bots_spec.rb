@@ -21,7 +21,7 @@ describe "BouncyBots" do
 
   describe ".bounce_bots macro" do
     it "sets the before filter" do
-      MacroTest.should_receive(:before_filter).with(:bounce_bot)
+      MacroTest.should_receive(:before_filter).with(:bounce_bot, {})
       MacroTest.class_eval do
         include BouncyBots
         bounce_bots :three, :bounce_to
@@ -35,6 +35,14 @@ describe "BouncyBots" do
       MacroTest.class_eval do
         include BouncyBots
         bounce_bots :three, :bounce_to
+      end
+    end
+
+    it "passes on filter options" do
+      MacroTest.should_receive(:before_filter).with(:bounce_bot, {:only => :index})
+      MacroTest.class_eval do
+        include BouncyBots
+        bounce_bots :three, :bounce_to, :only => :index
       end
     end
   end
