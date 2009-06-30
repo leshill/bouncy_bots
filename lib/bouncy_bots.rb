@@ -17,6 +17,8 @@ module BouncyBots
       bouncy_settings(to, *field_path)
     end
 
+    protected
+
     def bouncy_settings(to, *field_path)
       self.bounce_to = to
       self.bounce_field = field_path.last
