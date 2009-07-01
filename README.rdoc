@@ -1,6 +1,51 @@
-= bouncy_bots
+= Bouncy Bots!
 
-Description goes here.
+A simple negative captcha for rails.
+
+A negative captcha flips the normal captcha on its head, rather than asking humans identify themselves, we trick the bots into identifying themselves.  We do this by placing honey pots in a form that are invisible to a human, but visible to a bot.  When the bot submits the form, we look for the honey pot entries and discard the form submission if we find any.
+
+== Installing Bouncy Bots!
+
+Bouncy Bots! is available as a gem from github.  Install the gem with the following command:
+
+bc.
+% sudo gem install --source http://gems.github.com/ leshill-bouncy_bots
+
+After you have the gem installed, add a @config.gem@ line to your @environment.rb@ file:
+
+bc.
+  config.gem 'bouncy_bots', :version => 0.1.0
+
+== Using Bouncy Bots!
+
+Use the @bounce_bot@ macro in your controllers to detect and bounce bots.  The macro takes two parameters, the honey pot field name and the redirect path or url.  For example, to check for the field @:blog_url@ and redirect bots to the @pages_path@ :
+
+bc.
+  bounce_bot :blog_url, :pages_path
+
+You can also pass the standard controller filter options such as @:only@ or @:except@ :
+
+bc.
+  bounce_bot :blog_url, :pages_path, :only => [:create, :update]
+
+In your form views, add the honey pot field.  If you are using @form_tag@, you can use any form element, for example (using "haml":http://haml.hamptoncatlin.com/):
+
+bc.
+  = text_field_tag :blog_url, nil, :class => 'long_required'
+
+In your stylesheet, add a rule to 'hide' the field:
+
+bc.
+input.long_required { display:none; }
+
+If you use @form_for@, there are two helpers to simplify making the honey pot.
+
+bc.
+  = f.bounce_label 'Blog Url', :class => 'long_required'
+  %br
+  = f.bounce_field :class => 'highlight_required'
+
+And that's it.
 
 == Copyright
 

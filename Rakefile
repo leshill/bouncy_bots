@@ -6,9 +6,8 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "bouncy_bots"
     gem.summary = %Q{Simple negative captcha for Rails}
-    gem.email = "leshill@gmail.com"
     gem.homepage = "http://github.com/leshill/bouncy_bots"
-    gem.authors = ["Les Hill"]
+    gem.authors = ["Les Hill, Desi McAdam"]
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 
