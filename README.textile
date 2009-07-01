@@ -18,13 +18,13 @@ h2. Using Bouncy Bots!
 
 h3. Controllers
 
-Use the @bounce_bot@ macro in your controllers to detect and bounce bots.  The macro takes two parameters, the honey pot field name and the redirect path or url.  For example, to check for the field @:blog_url@ and redirect bots to the @pages_path@ :
+Use the @bounce_bots@ macro in your controllers to detect and bounce bots.  The macro takes two parameters, the honey pot field name and the redirect path or url.  For example, to check for the field @:blog_url@ and redirect bots to the @pages_path@ :
 
-  bounce_bot :blog_url, :pages_path
+  bounce_bots :blog_url, :pages_path
 
 You can also pass the standard controller filter options such as @:only@ or @:except@ :
 
-  bounce_bot :blog_url, :pages_path, :only => [:create, :update]
+  bounce_bots :blog_url, :pages_path, :only => [:create, :update]
 
 h3. Views
 
@@ -40,10 +40,10 @@ If you use @form_for@, there are two helpers to simplify making the honey pot.
 
   = f.bounce_label 'Blog Url', :class => 'long_required'
   %br
-  = f.bounce_field :class => 'highlight_required'
+  = f.bounce_field :class => 'long_required'
 
 And that's it.
 
 h2. Copyright
 
-Copyright (c) 2009 Les Hill. See LICENSE for details.
+Copyright (c) 2009 Les Hill and Desi McAdam. See LICENSE for details.
