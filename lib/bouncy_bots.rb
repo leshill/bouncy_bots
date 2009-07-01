@@ -47,3 +47,6 @@ module BouncyBots
   end
 end
 
+if defined? ActionController
+  ActionController::Base.send(:include, BouncyBots)
+end
