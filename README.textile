@@ -12,7 +12,7 @@ Bouncy Bots! is available as a gem from github.  Install the gem with the follow
 
 After you have the gem installed, add a @config.gem@ line to your @environment.rb@ file:
 
-  config.gem 'leshill-bouncy_bots', :lib => 'bouncy_bots', :version => 0.1.0
+  config.gem 'leshill-bouncy_bots', :lib => 'bouncy_bots', :version => '>= 0.1.1'
 
 h2. Using Bouncy Bots!
 
