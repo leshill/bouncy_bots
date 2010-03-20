@@ -6,8 +6,12 @@ begin
   Jeweler::Tasks.new do |gem|
     gem.name = "bouncy_bots"
     gem.summary = %Q{Simple negative captcha for Rails}
+    gem.description = %Q{Simple negative captcha for Rails}
     gem.homepage = "http://github.com/leshill/bouncy_bots"
+    gem.email = "leshill@gmail.com"
     gem.authors = ["Les Hill, Desi McAdam"]
+    gem.add_development_dependency "rspec", "= 1.3.0"
+    gem.add_development_dependency "activesupport", ">= 2.2"
     # gem is a Gem::Specification... see http://www.rubygems.org/read/chapter/20 for additional settings
   end
 
